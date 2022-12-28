@@ -1,0 +1,39 @@
+version: '3.8'
+
+# Build the multiservice architecture of my ChatpGPT App
+
+services:
+   # Start setting up the local instance Backend Server
+   edchatgpt-backend:
+      # Build the image based of Dockerfile
+      build:
+        dockerfile: Dockerfile
+        context: "./backend"
+      container_name: backend-container
+      ports:
+        - 2000:2000
+      #networks:
+      # - chatGPT_net
+
+   edchatgpt-frontend:
+     # stdin_open: true
+     #Build an image from the files in the project frontend directory (Dockerfile)
+     build:
+       dockerfile: Dockerfile
+       context: "./client"
+     container_name: frontend-container
+     depends_on:
+        - edchatgpt-backend
+     restart: always
+     ports:
+      - "8000:8000"
+      - "9000:5173"
+     #links: ['edchatgpt-backend:edchatgpt-backend']
+     #networks:
+      #- chatGPT_net
+     #environment:        
+     #      PROXY_API: http://edchatgpt-backend:2000/
+#networks:
+ #chatGPT_net:
+
+
