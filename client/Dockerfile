@@ -1,6 +1,6 @@
 FROM node:lts-alpine 
 #AS client-frontend
-LABEL maintainer = Tchamie Edmond 
+LABEL maintainer = Tcarters Edmond 
 LABEL  email = cartersedmund@gmail.com
 
 # Create app directory
@@ -20,6 +20,6 @@ COPY style.css ./
 COPY javascript.svg ./
 
 # Bundle app /source
-EXPOSE 5173
+#EXPOSE 5173
 EXPOSE 8000 
 CMD  [ "npm",  "run" , "dev" , "--"  , "--port" , "8000" ]

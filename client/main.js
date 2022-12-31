@@ -89,7 +89,9 @@ const handleSubmit = async (e) => {
     loader(messageDiv);
 
     // fetch data from our backend  -> bot's response 
-    const response = await fetch('http://localhost:2000', {
+    const response = await fetch( 'http://localhost:2000', {
+    //'https://ed-chatgpt.onrender.com/', {
+    // 'http://localhost:2000', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
